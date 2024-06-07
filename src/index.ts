@@ -40,6 +40,11 @@ exec(`sh exec.sh`, (err: Error | null, output: string) => {
 
                 console.log(process.env["secretUsername"]);
                 console.log(process.env["secretPassword"]);
+               
+        //   echo "password=$secretPassword" >> $GITHUB_OUTPUT
+        //       exec(' echo "username=$secretUsername" >> $GITHUB_OUTPUT',(error,output)=>{});
+              
+              
             });
         }
     });
