@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && ncc build lib/index.js",
+    "build": "tsc && ncc build src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,9 +11,13 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node": "^20.13.1",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@vercel/ncc": "^0.38.1"
+    "@actions/exec": "^1.1.1",
+    "@vercel/ncc": "^0.38.1",
+    "xml-js": "^1.6.11",
+    "xml-parse-from-string": "^1.0.1"
   }
 }
