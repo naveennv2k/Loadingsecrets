@@ -1,17 +1,17 @@
-//import { exec } from 'node:child_process';
+import { exec } from 'node:child_process';
 import * as xmlJs from 'xml-js';
 import * as core from '@actions/core';
-import * as exec from "@actions/exec";
+import * as exec1 from "@actions/exec";
 import * as fs from 'fs';
 
 async function action() {
-    const cmdOut = await exec.getExecOutput(
+    const cmdOut = await exec1.getExecOutput(
         `./zv login`
     );
-    const cmdOut1 = await exec.getExecOutput(
+    const cmdOut1 = await exec1.getExecOutput(
         `printf "{{secrets.MASTER_PASSWORD}}" | ./zv unlock `
     );
-    const output = await exec.getExecOutput(
+    const output = await exec1.getExecOutput(
         './zv search -k "myPassword"'
     );
     console.log(output.stdout);
