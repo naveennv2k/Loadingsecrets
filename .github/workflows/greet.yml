@@ -12,4 +12,4 @@ jobs:
       - id: getSecrets
         uses: ./
       - name: getSecrets
-        run: echo "${{steps.getSecrets.outputs.username}}"
+        run: echo "$username"
