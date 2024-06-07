@@ -18,4 +18,5 @@ runs:
     
     - name: run program
       run: node ./dist/index.js 
+      shell: bash
       
