@@ -15,10 +15,6 @@ runs:
   steps:
     - name: My first step
       uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-        with:
-          node-version: '20'
     
     - name: run program
       run: node ./dist/index.js 
