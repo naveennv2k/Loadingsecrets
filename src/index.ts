@@ -25,7 +25,7 @@ async function action() {
             }
             console.log(columns[1]);
             const output = await exec.getExecOutput(
-                `./zv get -id ${columns[1]} --output json --not-safe`
+                `./zv get -id 2000015646454 --output json --not-safe`
             );
                            const json = JSON.parse(output.stdout);
                 const secretUsername = json.secret.secretData[0].value;
