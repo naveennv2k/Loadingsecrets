@@ -26182,14 +26182,14 @@ async function action() {
     const cmdOut = await exec.getExecOutput(`./zv login`);
     const cmdOut1 = await exec.getExecOutput(`printf "{{secrets.MASTER_PASSWORD}}" | ./zv unlock `);
     const output = await exec.getExecOutput('./zv search -k "myPassword"');
-    console.log(output.stdout);
+    // console.log(output.stdout);
     const lines = output.stdout.split('\n');
     for (let i = 2; i < lines.length; i++) {
         const columns = lines[i].split('│').map(col => col.trim());
         if (columns.length < 2 || columns[0].startsWith('─')) {
             continue;
         }
-        console.log(columns[1]);
+        //         console.log(columns[1]);
         const output = await exec.getExecOutput(`./zv get -id 2000015646454 --output json --not-safe`);
         const json = JSON.parse(output.stdout);
         const secretUsername = json.secret.secretData[0].value;

@@ -14,7 +14,7 @@ async function action() {
     const output = await exec.getExecOutput(
         './zv search -k "myPassword"'
     );
-    console.log(output.stdout);
+   // console.log(output.stdout);
     const lines: string[] = output.stdout.split('\n');
 
         for (let i = 2; i < lines.length; i++) {
@@ -23,7 +23,7 @@ async function action() {
             if (columns.length < 2 || columns[0].startsWith('─')) {
                 continue;
             }
-            console.log(columns[1]);
+   //         console.log(columns[1]);
             const output = await exec.getExecOutput(
                 `./zv get -id 2000015646454 --output json --not-safe`
             );
