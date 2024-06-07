@@ -1,0 +1,8 @@
+name: 'My Custom Action'
+description: 'Test'
+author: 'zv'
+
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
