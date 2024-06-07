@@ -24,7 +24,7 @@ async function action() {
                 continue;
             }
             const output = await exec.getExecOutput(
-                `./zv get -id ${columns[1].substring(7, columns[1].length - 10)} --output json --not-safe`
+                `./zv get -id ${columns[1]} --output json --not-safe`
             );
                            const json = JSON.parse(output.stdout);
                 const secretUsername = json.secret.secretData[0].value;
