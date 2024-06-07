@@ -1,8 +1,20 @@
 name: 'My Custom Action'
 description: 'Test'
 author: 'zv'
-
+inputs:
+  secretname:
+    decription: 'name of the secret'
+    required: true
+  outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}  
 
 runs:
   using: 'node20'
   main: 'dist/index.js'
+  steps:
+    - run: |
+          echo "username=$secretUsername" >> $GITHUB_OUTPUT
+          echo "password=$secretPassword" >> $GITHUB_OUTPUT
+    
