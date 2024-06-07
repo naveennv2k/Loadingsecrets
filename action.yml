@@ -5,15 +5,16 @@ inputs:
   secretname:
     decription: 'name of the secret'
     required: true
-  outputs:
+outputs:
   random-number:
     description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-id }}  
+    value: ${{ steps.getSecrets.outputs.username }}  
 
 runs:
   using: 'node20'
   main: 'dist/index.js'
   steps:
+      id: getSecrets 
     - run: |
           echo "username=$secretUsername" >> $GITHUB_OUTPUT
           echo "password=$secretPassword" >> $GITHUB_OUTPUT
