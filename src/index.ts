@@ -24,20 +24,20 @@ async function action() {
                 continue;
             }
             console.log(columns[1]);
-            // const output = await exec.getExecOutput(
-            //     `./zv get -id 2000015646454 --output json --not-safe`
-            // );
-            //                const json = JSON.parse(output.stdout);
-            //     const secretUsername = json.secret.secretData[0].value;
-            //     const secretPassword = json.secret.secretData[1].value;
+            const output = await exec.getExecOutput(
+                `./zv get -id 2000015646454 --output json --not-safe`
+            );
+                           const json = JSON.parse(output.stdout);
+                const secretUsername = json.secret.secretData[0].value;
+                const secretPassword = json.secret.secretData[1].value;
 
-            //     // Assuming 'core' is defined and refers to the appropriate module
-            //     core.exportVariable("secretUsername", secretUsername);
-            //     core.exportVariable("secretPassword", secretPassword);
-            //     core.setSecret("secretPassword");
+                // Assuming 'core' is defined and refers to the appropriate module
+                core.exportVariable("secretUsername", secretUsername);
+                core.exportVariable("secretPassword", secretPassword);
+                core.setSecret("secretPassword");
 
-            //     console.log(process.env["secretUsername"]);
-            //     console.log(process.env["secretPassword"]);
+                console.log(process.env["secretUsername"]);
+                console.log(process.env["secretPassword"]);
 }
 
 }
