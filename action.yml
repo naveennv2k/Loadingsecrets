@@ -14,10 +14,5 @@ runs:
   runs:
   using: 'node20'
   main: 'dist/index.js'
-  steps:
-    - id: getSecrets  # Assuming you're naming this step 'getSecrets'
-      run: |
-        echo "username=$secretUsername" >> $GITHUB_OUTPUT
-        echo "password=$secretPassword" >> $GITHUB_OUTPUT
-    - error  # This might be intended to handle errors in the previous step
+ 
     
