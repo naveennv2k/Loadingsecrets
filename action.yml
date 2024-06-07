@@ -14,5 +14,14 @@ runs:
   runs:
   using: 'node20'
   main: 'dist/index.js'
+<<<<<<< HEAD
  
     
+=======
+  steps:
+   - id: getSecrets 
+     run: |
+          echo "username=$secretUsername" >> $GITHUB_OUTPUT
+          echo "password=$secretPassword" >> $GITHUB_OUTPUT
+   - error 
+>>>>>>> refs/remotes/origin/main
