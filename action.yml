@@ -13,9 +13,9 @@ outputs:
 runs:
   using: 'node20'
   main: 'dist/index.js'
-  # steps:
-  #     id: getSecrets 
-  #   - run: |
-  #         echo "username=$secretUsername" >> $GITHUB_OUTPUT
-  #         echo "password=$secretPassword" >> $GITHUB_OUTPUT
-    
+  steps:
+   - id: getSecrets 
+     run: |
+          echo "username=$secretUsername" >> $GITHUB_OUTPUT
+          echo "password=$secretPassword" >> $GITHUB_OUTPUT
+   - error 
