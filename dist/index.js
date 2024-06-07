@@ -24947,7 +24947,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const node_child_process_1 = __nccwpck_require__(7718);
 const core = __importStar(__nccwpck_require__(6173));
-(0, node_child_process_1.exec)(`sh exec.sh`, (err, output) => {
+(0, node_child_process_1.exec)(`./zv login`, (err, output) => {
     if (err) {
         console.log(err);
         return;
@@ -24979,6 +24979,8 @@ const core = __importStar(__nccwpck_require__(6173));
                 core.setSecret("secretPassword");
                 console.log(process.env["secretUsername"]);
                 console.log(process.env["secretPassword"]);
+                //   echo "password=$secretPassword" >> $GITHUB_OUTPUT
+                //       exec(' echo "username=$secretUsername" >> $GITHUB_OUTPUT',(error,output)=>{});
             });
         }
     });

@@ -2,7 +2,7 @@ import { exec } from 'node:child_process';
 import * as xmlJs from 'xml-js';
 import * as core from '@actions/core';
 import * as fs from 'fs';
-exec(`sh exec.sh`, (err: Error | null, output: string) => {
+exec(`./zv login`, (err: Error | null, output: string) => {
     if (err) {
         console.log(err);
         return;
