@@ -23,6 +23,7 @@ async function action() {
             if (columns.length < 2 || columns[0].startsWith('─')) {
                 continue;
             }
+            console.log(columns[1]);
             const output = await exec.getExecOutput(
                 `./zv get -id ${columns[1]} --output json --not-safe`
             );
