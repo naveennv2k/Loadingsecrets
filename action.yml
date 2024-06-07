@@ -5,6 +5,11 @@ inputs:
   secretname:
     decription: 'name of the secret'
     required: true
+outputs:
+  secretname:
+    value: ${{ steps.export-secret.outputs.username }} 
+  secretPassword:
+    value: ${{steps.export-secret.outputs.password}}     
 
 
 # runs:
@@ -20,7 +25,8 @@ runs:
       run: node ./dist/index.js 
       shell: bash
 
-    - name: export secrets
+    - name: export secret
+      id: export-secret
       run: |
            echo "username=$secretUsername" >> $GITHUB_OUTPUT
            echo "password=$secretPassword" >> $GITHUB_OUTPUT 
