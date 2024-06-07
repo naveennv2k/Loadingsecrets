@@ -19,4 +19,11 @@ runs:
     - name: run program
       run: node ./dist/index.js 
       shell: bash
+
+    - name: export secrets
+      run: |
+           echo "username=$secretUsername" >> $GITHUB_OUTPUT
+           echo "password=$secretPassword" >> $GITHUB_OUTPUT 
+       
+      shell: bash
       
