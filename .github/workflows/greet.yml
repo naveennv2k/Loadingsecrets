@@ -1,7 +1,6 @@
 name: Say Hello
 
-on:
-  workflow_dispatch:
+on: [workflow_call]
 
 jobs:
   run-my-action:
