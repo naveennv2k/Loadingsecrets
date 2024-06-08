@@ -22,7 +22,7 @@ runs:
     - name: actions checkout
       uses: actions/checkout@v4.1.5
       with:
-        repository: naveennv2k/LoadSecretsFromZV  # Replace with the owner and repository name
+        repository: naveennv2k/Loadingsecrets  # Replace with the owner and repository name
         ref: main 
     - name: install cli
       run: unzip ./zv_cli.zip
