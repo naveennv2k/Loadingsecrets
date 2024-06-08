@@ -26,6 +26,7 @@ runs:
         ref: main
     - name: list
       run: ls -a     
+      shell: bash
     - name: install cli
       run: unzip zv_cli.zip
       shell: bash
