@@ -66,9 +66,6 @@ async function action() {
    
    
    
-   
-   
-   
 //     const output = await exec.getExecOutput(
 //         './zv search -k "myPassword"'
 //     );
