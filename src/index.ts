@@ -9,11 +9,11 @@ async function action() {
         `./zv login`
     );
     const cmdOut1 = await exec1.getExecOutput(
-        `printf "{{secrets.MASTER_PASSWORD}}" | ./zv unlock `
+        `printf "$masterPassword" | ./zv unlock `
     );
    
    
-    exec(`./zv search -k ${process.argv[2]}`, (err, output) => {
+    exec(`./zv search -k $passwordName`, (err, output) => {
         // console.log("in");
          // once the command has completed, the callback function is called
          if (err) {
@@ -41,8 +41,7 @@ async function action() {
                  
                const secretUsername=json.secret.secretData[0].value;
                const secretpassword=json.secret.secretData[1].value;
-               console.log(secretUsername);
-               console.log(secretpassword);
+               
                core.exportVariable("testName",secretUsername);
                  // Log the cleaned output
                  // cleanOutput.forEach(line => console.log(line));
