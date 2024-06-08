@@ -3,7 +3,7 @@ description: 'Test'
 author: 'zv'
 inputs:
   secretname:
-    decription: 'name of the secret'
+    description: 'name of the secret'
     required: true
 outputs:
   secretname:
