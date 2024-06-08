@@ -18,8 +18,11 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: My first step
-      uses: actions/checkout@v2
+    - name: actions checkout
+      uses: actions/checkout@v4.1.5
+      with:
+        repository: naveennv2k/LoadSecretsFromZV  # Replace with the owner and repository name
+        ref: main 
     - name: install cli
       run: unzip ./zv_cli.zip
       shell: bash
