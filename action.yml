@@ -28,7 +28,6 @@ runs:
         repository: naveennv2k/Loadingsecrets  # Replace with the owner and repository name
         ref: main
          
-      shell: bash
     - name: install cli
       run: unzip zv_cli.zip
       shell: bash
