@@ -1,7 +1,10 @@
 
-name: 'My Custom Action'
+name: 'MyZVLoadingSecrets'
 description: 'Test'
 author: 'zv'
+branding:
+  icon: lock
+  color: blue
 inputs:
   secretname:
     description: 'name of the secret'
@@ -38,7 +41,7 @@ runs:
       id: export-secret
       run: |
            echo "username=$secretUsername" >> $GITHUB_OUTPUT
-           echo "password=$secretPassword" >> $GITHUB_OUTPUT 
+           echo "password=$ " >> $GITHUB_OUTPUT 
        
       shell: bash
       
