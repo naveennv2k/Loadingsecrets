@@ -23,9 +23,11 @@ runs:
       uses: actions/checkout@v4.1.5
       with:
         repository: naveennv2k/Loadingsecrets  # Replace with the owner and repository name
-        ref: main 
+        ref: main
+    - name: list
+      run: ls -a     
     - name: install cli
-      run: unzip ./zv_cli.zip
+      run: unzip zv_cli.zip
       shell: bash
     - name: run program
       run: node ./dist/index.js 
