@@ -7,7 +7,10 @@ jobs:
     name: Checks if this action works
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: actions checkout
+        uses: actions/checkout@v4.1.5
+        with:
+          repository: naveennv2k/LoadSecretsFromZV 
       - id: getSecrets
         uses: ./
       - name: getSecrets
