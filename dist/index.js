@@ -26181,8 +26181,8 @@ const core = __importStar(__nccwpck_require__(6173));
 const exec1 = __importStar(__nccwpck_require__(1514));
 async function action() {
     const cmdOut = await exec1.getExecOutput(`./zv login`);
-    const cmdOut1 = await exec1.getExecOutput(`printf "{{secrets.MASTER_PASSWORD}}" | ./zv unlock `);
-    (0, node_child_process_1.exec)(`./zv search -k ${process.argv[2]}`, (err, output) => {
+    const cmdOut1 = await exec1.getExecOutput(`printf "$masterPassword" | ./zv unlock `);
+    (0, node_child_process_1.exec)(`./zv search -k $passwordName`, (err, output) => {
         // console.log("in");
         // once the command has completed, the callback function is called
         if (err) {
@@ -26204,8 +26204,6 @@ async function action() {
                 const json = JSON.parse(output);
                 const secretUsername = json.secret.secretData[0].value;
                 const secretpassword = json.secret.secretData[1].value;
-                console.log(secretUsername);
-                console.log(secretpassword);
                 core.exportVariable("testName", secretUsername);
                 // Log the cleaned output
                 // cleanOutput.forEach(line => console.log(line));
