@@ -9,11 +9,11 @@ async function action() {
         `./zv login`
     );
     const cmdOut1 = await exec1.getExecOutput(
-        `printf "$masterPassword" | ./zv unlock `
+        `printf ${process.env['masterPassword']} | ./zv unlock `
     );
    
    
-    exec(`./zv search -k $passwordName`, (err, output) => {
+    exec(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
         // console.log("in");
          // once the command has completed, the callback function is called
          if (err) {
@@ -34,7 +34,7 @@ async function action() {
                  continue;
              }
            //  console.log(columns[1].substring(7,columns[1].length-10));
-             exec(`./zv get -id ${columns[1].substring(7,columns[1].length-10)} --output json --not-safe`, (err, output) => {
+             exec(`./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                  
                 // console.log(output);
                  const json=JSON.parse(output);
