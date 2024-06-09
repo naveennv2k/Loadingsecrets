@@ -26181,8 +26181,8 @@ const core = __importStar(__nccwpck_require__(6173));
 const exec1 = __importStar(__nccwpck_require__(1514));
 async function action() {
     const cmdOut = await exec1.getExecOutput(`./zv login`);
-    const cmdOut1 = await exec1.getExecOutput(`printf "$masterPassword" | ./zv unlock `);
-    (0, node_child_process_1.exec)(`./zv search -k $passwordName`, (err, output) => {
+    const cmdOut1 = await exec1.getExecOutput(`printf ${process.env['masterPassword']} | ./zv unlock `);
+    (0, node_child_process_1.exec)(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
         // console.log("in");
         // once the command has completed, the callback function is called
         if (err) {
@@ -26199,7 +26199,7 @@ async function action() {
                 continue;
             }
             //  console.log(columns[1].substring(7,columns[1].length-10));
-            (0, node_child_process_1.exec)(`./zv get -id ${columns[1].substring(7, columns[1].length - 10)} --output json --not-safe`, (err, output) => {
+            (0, node_child_process_1.exec)(`./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                 // console.log(output);
                 const json = JSON.parse(output);
                 const secretUsername = json.secret.secretData[0].value;
