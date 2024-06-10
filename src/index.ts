@@ -12,9 +12,10 @@ async function action() {
     const cmdOut  = await exec1.getExecOutput(
         `./zv login`
     );
-    const cmdOut1 = await exec1.getExecOutput(
-        ` ./zv unlock ${process.env['masterPassword']} ` 
-    );
+    const cmdOut1 = await exec(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+        console.log(output);
+    });
+      
    
    
     exec(`./zv search -k ${process.env['passwordName']}`, (err, output) => {

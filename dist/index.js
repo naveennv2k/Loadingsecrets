@@ -26182,7 +26182,9 @@ const exec1 = __importStar(__nccwpck_require__(1514));
 async function action() {
     const cmd = await exec1.getExecOutput(`bash exec.sh`);
     const cmdOut = await exec1.getExecOutput(`./zv login`);
-    const cmdOut1 = await exec1.getExecOutput(` ./zv unlock ${process.env['masterPassword']} `);
+    const cmdOut1 = await (0, node_child_process_1.exec)(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+        console.log(output);
+    });
     (0, node_child_process_1.exec)(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
         if (err) {
             console.error("could not execute command: ", err);
