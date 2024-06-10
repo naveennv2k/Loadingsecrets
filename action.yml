@@ -6,19 +6,12 @@ branding:
   icon: lock
   color: blue
 inputs:
-  secretname:
+  secretName:
     description: 'name of the secret'
     required: true
-outputs:
-  secretname:
-    value: ${{ steps.export-secret.outputs.username }} 
-  secretPassword:
-    value: ${{steps.export-secret.outputs.password}}     
 
 
-# runs:
-#   using: 'node20'
-#   main: 'dist/index.js'
+
 runs:
   using: "composite"
   steps:
@@ -32,7 +25,7 @@ runs:
       run: unzip zv_cli.zip
       shell: bash
     - name: run program
-      run: node ./dist/index.js 
+      run: node ./dist/index.js ${{inputs.secretName}}
       shell: bash
     
     - name: export secret
