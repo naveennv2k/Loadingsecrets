@@ -13,7 +13,7 @@ async function action() {
         `./zv login`
     );
     const cmdOut1 = await exec1.getExecOutput(
-        `printf ${process.env['masterPassword']} | ./zv unlock `
+        ` ./zv unlock ${process.env['masterPassword']} ` 
     );
    
    
