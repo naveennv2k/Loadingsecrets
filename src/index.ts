@@ -14,29 +14,28 @@ async function action() {
    
    
     exec(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
-        // console.log("in");
-         // once the command has completed, the callback function is called
+        
          if (err) {
-             // log and return if we encounter an error
+            
              console.error("could not execute command: ", err)
              return
          }
         
          const lines = output.split('\n');
-        // console.log(lines);
+        
          
          for (let i = 2; i < lines.length; i++) {
              
              const columns = lines[i].split('│').map(col => col.trim());
-            // console.log(columns);
+          
              
              if (columns.length < 2 || columns[0].startsWith('─')) {
                  continue;
              }
-           //  console.log(columns[1].substring(7,columns[1].length-10));
+          
              exec(`./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                  
-                // console.log(output);
+               
                  const json=JSON.parse(output);
                  
                const secretUsername=json.secret.secretData[0].value;
@@ -44,8 +43,7 @@ async function action() {
                core.exportVariable("secretUsername", secretUsername);
                core.exportVariable("secretPassword", secretPassword);
                core.setSecret(secretPassword);
-                 // Log the cleaned output
-                 // cleanOutput.forEach(line => console.log(line));
+             
              }
          );
          }
@@ -55,105 +53,10 @@ async function action() {
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-//     const output = await exec.getExecOutput(
-//         './zv search -k "myPassword"'
-//     );
-//    // console.log(output.stdout);
-//     const lines: string[] = output.stdout.split('\n');
 
-//         for (let i = 2; i < lines.length; i++) {
-//             const columns: string[] = lines[i].split('│').map(col => col.trim());
-
-//             if (columns.length < 2 || columns[0].startsWith('─')) {
-//                 continue;
-//             }
-//    //         console.log(columns[1]);
-//             const output = await exec.getExecOutput(
-//                 `./zv get -id 2000015646454 --output json `
-//             );
-//                            const json = JSON.parse(output.stdout);
-//                 const secretUsername = json.secret.secretData[0].value;
-//                 const secretPassword = json.secret.secretData[1].value;
-
-//                 // Assuming 'core' is defined and refers to the appropriate module
-//                 core.exportVariable("secretUsername", secretUsername);
-//                 core.exportVariable("secretPassword", secretPassword);
-//                 core.setSecret("secretPassword");
-
-//                 console.log(process.env["secretUsername"]);
-//                 console.log(process.env["secretPassword"]);
-// }
 
 }
 action();
 
 
 
-
-
-
-
-
-
-
-
-
-// exec(`./zv login`, (err: Error | null, output: string) => {
-//     if (err) {
-//         console.log(err);
-//         return;
-//     }
-//     console.log(output);
-
-//     // Call the second function here, inside the callback of the first function
-//     exec(`./zv search -k "myPassword"`, (err: Error | null, output: string) => {
-//         if (err) {
-//             console.log(err);
-//             return;
-//         }
-//         const lines: string[] = output.split('\n');
-
-//         for (let i = 2; i < lines.length; i++) {
-//             const columns: string[] = lines[i].split('│').map(col => col.trim());
-
-//             if (columns.length < 2 || columns[0].startsWith('─')) {
-//                 continue;
-//             }
-
-//             exec(`./zv get -id ${columns[1].substring(7, columns[1].length - 10)} --output json --not-safe`, (err, output) => {
-//                 if (err) {
-//                     console.error(err);
-//                     return;
-//                 }
-//                 const json = JSON.parse(output);
-//                 const secretUsername = json.secret.secretData[0].value;
-//                 const secretPassword = json.secret.secretData[1].value;
-
-//                 // Assuming 'core' is defined and refers to the appropriate module
-//                 core.exportVariable("secretUsername", secretUsername);
-//                 core.exportVariable("secretPassword", secretPassword);
-//                 core.setSecret("secretPassword");
-
-//                 console.log(process.env["secretUsername"]);
-//                 console.log(process.env["secretPassword"]);
-               
-//         //   echo "password=$secretPassword" >> $GITHUB_OUTPUT
-//         //       exec(' echo "username=$secretUsername" >> $GITHUB_OUTPUT',(error,output)=>{});
-              
-              
-//             });
-//         }
-//     });
-// });
