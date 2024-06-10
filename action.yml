@@ -5,10 +5,7 @@ author: 'zv'
 branding:
   icon: lock
   color: blue
-inputs:
-  secretName:
-    description: 'name of the secret'
-    required: true
+
 
 
 
