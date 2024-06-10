@@ -8,7 +8,7 @@ async function action() {
     const cmd  = await exec1.getExecOutput(
         `sh exec.sh`
     );
-    return;
+   
     const cmdOut  = await exec1.getExecOutput(
         `./zv login`
     );

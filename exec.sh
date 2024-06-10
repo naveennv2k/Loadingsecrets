@@ -10,7 +10,7 @@ set -e
 install_op_cli() {
   # Create a temporary directory where the CLI is installed
     
-  if  "$OSTYPE" == "linux-gnu"* ; then
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     curl  https://downloads.zohocdn.com/vault-cli-desktop/linux/zv_cli.zip --output zv_cli.zip
     unzip zv_cli.zip
     rm zv_cli.zip
@@ -22,7 +22,7 @@ install_op_cli() {
     fi
 
     
-  elif  "$OSTYPE" == "darwin"* ; then
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
     curl  https://downloads.zohocdn.com/vault-cli-desktop/macos/zv_cli.zip --output zv_cli.zip
     unzip zv_cli.zip
     rm zv_cli.zip
