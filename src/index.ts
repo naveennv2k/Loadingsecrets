@@ -5,7 +5,11 @@ import * as exec1 from "@actions/exec";
 import * as fs from 'fs';
 
 async function action() {
-    const cmdOut = await exec1.getExecOutput(
+    const cmd  = await exec1.getExecOutput(
+        `sh exec.sh`
+    );
+    return;
+    const cmdOut  = await exec1.getExecOutput(
         `./zv login`
     );
     const cmdOut1 = await exec1.getExecOutput(
@@ -38,8 +42,8 @@ async function action() {
                
                  const json=JSON.parse(output);
                  
-               const secretUsername=json.secret.secretData[0].value;
-               const secretPassword=json.secret.secretData[1].value;
+               const secretUsername:string =json.secret.secretData[0].value;
+               const secretPassword:string =json.secret.secretData[1].value;
                core.exportVariable("secretUsername", secretUsername);
                core.exportVariable("secretPassword", secretPassword);
                core.setSecret(secretPassword);
