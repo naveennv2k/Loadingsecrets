@@ -6,7 +6,7 @@ import * as fs from 'fs';
 
 async function action() {
     const cmd  = await exec1.getExecOutput(
-        `sh exec.sh`
+        `bash exec.sh`
     );
    
     const cmdOut  = await exec1.getExecOutput(

@@ -11,7 +11,7 @@ install_op_cli() {
     curl  https://downloads.zohocdn.com/vault-cli-desktop/linux/zv_cli.zip --output zv_cli.zip
     unzip zv_cli.zip
     rm zv_cli.zip
-    
+    exit 0
 
     if [[ "$ARCH" != "386" ]] && [[ "$ARCH" != "amd64" ]] && [[ "$ARCH" != "arm" ]] && [[ "$ARCH" != "arm64" ]]; then
       echo "Unsupported architecture for the 1Password CLI: $ARCH."
