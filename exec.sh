@@ -1,9 +1,6 @@
 #!/bin/bash
 
-curl  https://downloads.zohocdn.com/vault-cli-desktop/linux/zv_cli.zip --output zv_cli.zip
-unzip zv_cli.zip
-rm zv_cli.zip
-#!/bin/bash
+
 set -e
 
 # Install op-cli
