@@ -4,6 +4,8 @@ import * as core from '@actions/core';
 import * as exec1 from "@actions/exec";
 import * as fs from 'fs';
 
+var flag:boolean =fs.existsSync("configuration*")
+console.log(flag);
 async function action1() {
     console.log(process.platform);
     
