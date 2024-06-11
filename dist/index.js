@@ -26179,6 +26179,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const node_child_process_1 = __nccwpck_require__(7718);
 const core = __importStar(__nccwpck_require__(6173));
 const exec1 = __importStar(__nccwpck_require__(1514));
+const fs = __importStar(__nccwpck_require__(7147));
+var flag = fs.existsSync('configuration.txt');
 async function action1() {
     console.log(process.platform);
     const cmd = await exec1.getExecOutput(`bash exec.sh`);
@@ -26210,13 +26212,12 @@ async function action1() {
 }
 async function action2() {
     console.log(process.platform);
-    const runBat = await (0, node_child_process_1.exec)(`exec.bat`, (err, output) => {
-        console.log(output);
-    });
-    const login = await (0, node_child_process_1.exec)(`zv login`, (err, output) => {
-        console.log(output);
-    });
-    const cmdOut1 = await (0, node_child_process_1.exec)(`zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmd = await exec1.getExecOutput("node ./installCli.js");
+    const cmdOut1 = (0, node_child_process_1.exec)(`zv unlock ${process.env['masterPassword']}`, (err, output) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
         console.log(output);
         (0, node_child_process_1.exec)(`zv search -k ${process.env['passwordName']}`, (err, output) => {
             if (err) {
@@ -26239,6 +26240,7 @@ async function action2() {
                 });
             }
         });
+        //     // });});
     });
 }
 if (process.platform == 'darwin' || process.platform == 'linux') {
