@@ -26210,9 +26210,13 @@ async function action1() {
 }
 async function action2() {
     console.log(process.platform);
-    const cmd = await exec1.getExecOutput(`exec.bat`);
-    const cmdOut = await exec1.getExecOutput(`zv login`);
-    const cmdOut1 = await (0, node_child_process_1.exec)(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const runBat = await (0, node_child_process_1.exec)(`exec.bat`, (err, output) => {
+        console.log(output);
+    });
+    const login = await (0, node_child_process_1.exec)(`zv login`, (err, output) => {
+        console.log(output);
+    });
+    const cmdOut1 = await (0, node_child_process_1.exec)(`zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
     });
     (0, node_child_process_1.exec)(`zv search -k ${process.env['passwordName']}`, (err, output) => {

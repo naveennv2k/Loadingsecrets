@@ -65,15 +65,16 @@ async function action1() {
 
 async function action2() {
     console.log(process.platform);
-    
-    const cmd  = await exec1.getExecOutput(
-        `exec.bat`
-    );
+    const runBat = await exec(`exec.bat`, (err, output) => {
+        console.log(output);
+    });
    
-    const cmdOut  = await exec1.getExecOutput(
-        `zv login`
-    );
-    const cmdOut1 = await exec(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const login = await exec(`zv login`, (err, output) => {
+        console.log(output);
+    });
+   
+   
+    const cmdOut1 = await exec(`zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
     });
       
