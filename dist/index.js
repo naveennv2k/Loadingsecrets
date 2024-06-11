@@ -26182,9 +26182,11 @@ const exec1 = __importStar(__nccwpck_require__(1514));
 const fs = __importStar(__nccwpck_require__(7147));
 var flag = fs.existsSync('configuration.txt');
 async function action1() {
-    console.log(process.platform);
-    const cmd = await exec1.getExecOutput(`bash exec.sh`);
-    const cmdOut = await exec1.getExecOutput(`./zv login`);
+    if (flag == false) {
+        console.log(process.platform);
+        const cmd = await exec1.getExecOutput(`bash exec.sh`);
+        const cmdOut = await exec1.getExecOutput(`./zv login`);
+    }
     const cmdOut1 = await (0, node_child_process_1.exec)(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
         (0, node_child_process_1.exec)(`./zv search -k ${process.env['passwordName']}`, (err, output) => {

@@ -7,7 +7,7 @@ import * as fs from 'fs';
 var flag:boolean =fs.existsSync('configuration.txt');
 
 async function action1() {
-   
+   if(flag==false){
    
     console.log(process.platform);
     
@@ -18,6 +18,7 @@ async function action1() {
     const cmdOut  = await exec1.getExecOutput(
         `./zv login`
     );
+}  
     const cmdOut1 = await exec(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
     
