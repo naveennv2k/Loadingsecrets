@@ -26179,7 +26179,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const node_child_process_1 = __nccwpck_require__(7718);
 const core = __importStar(__nccwpck_require__(6173));
 const exec1 = __importStar(__nccwpck_require__(1514));
-async function action() {
+async function action1() {
+    console.log(process.platform);
     const cmd = await exec1.getExecOutput(`bash exec.sh`);
     const cmdOut = await exec1.getExecOutput(`./zv login`);
     const cmdOut1 = await (0, node_child_process_1.exec)(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
@@ -26207,7 +26208,41 @@ async function action() {
         }
     });
 }
-action();
+async function action2() {
+    console.log(process.platform);
+    const cmd = await exec1.getExecOutput(`exec.bat`);
+    const cmdOut = await exec1.getExecOutput(`zv login`);
+    const cmdOut1 = await (0, node_child_process_1.exec)(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+        console.log(output);
+    });
+    (0, node_child_process_1.exec)(`zv search -k ${process.env['passwordName']}`, (err, output) => {
+        if (err) {
+            console.error("could not execute command: ", err);
+            return;
+        }
+        const lines = output.split('\n');
+        for (let i = 2; i < lines.length; i++) {
+            const columns = lines[i].split('│').map(col => col.trim());
+            if (columns.length < 2 || columns[0].startsWith('─')) {
+                continue;
+            }
+            (0, node_child_process_1.exec)(`zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
+                const json = JSON.parse(output);
+                const secretUsername = json.secret.secretData[0].value;
+                const secretPassword = json.secret.secretData[1].value;
+                core.exportVariable("secretUsername", secretUsername);
+                core.exportVariable("secretPassword", secretPassword);
+                core.setSecret(secretPassword);
+            });
+        }
+    });
+}
+if (process.platform == 'darwin' || process.platform == 'linux') {
+    action1();
+}
+if (process.platform == 'win32') {
+    action2();
+}
 
 
 /***/ }),
