@@ -12,15 +12,13 @@ branding:
 runs:
   using: "composite"
   steps:
-    - name: actions checkout
-      uses: actions/checkout@v4.1.5
-      with:
-        repository: naveennv2k/Loadingsecrets  # Replace with the owner and repository name
-        ref: main
+   
          
     
     - name: run program
-      run: node ./dist/index.js ${{inputs.secretName}}
+      run: |
+           cd  GITHUB_ACTION_PATH
+           node ./dist/index.js ${{inputs.secretName}}
       shell: bash
     
     - name: export secret
