@@ -14,18 +14,12 @@ async function action1() {
     const cmd  = await exec1.getExecOutput(
         `bash exec.sh`
     );
-    const cmd1  = await exec1.getExecOutput(
-        `|
-        cd $GITHUB_WORKSPACE/zv 
-        ls -a
-        
-        `
-    );
+   
     const cmdOut  = await exec1.getExecOutput(
-        `./zv login`
+        `$GITHUB_WORKSPACE/zv/./zv login`
     );
 }  
-    const cmdOut1 = await exec(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmdOut1 = await exec(`$GITHUB_WORKSPACE/zv/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
     
       
@@ -51,7 +45,7 @@ async function action1() {
                  continue;
              }
           
-             exec(`./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
+             exec(`$GITHUB_WORKSPACE/zv./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                  
                
                  const json=JSON.parse(output);
