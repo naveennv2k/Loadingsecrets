@@ -12,13 +12,18 @@ branding:
 runs:
   using: "composite"
   steps:
-   
+    - uses: actions/checkout@v4
+    # - name: actions checkout
+    #   uses: actions/checkout@v4.1.5
+    #   with:
+    #     repository: naveennv2k/Loadingsecrets  # Replace with the owner and repository name
+    #     ref: main
          
-    
+    - name: install cli
+      run: unzip zv_cli.zip
+      shell: bash
     - name: run program
-      run: |
-           cd  $GITHUB_ACTION_PATH
-           node ./dist/index.js ${{inputs.secretName}}
+      run: node ./dist/index.js ${{inputs.secretName}}
       shell: bash
     
     - name: export secret
