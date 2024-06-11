@@ -26183,7 +26183,7 @@ const fs = __importStar(__nccwpck_require__(7147));
 var flag = fs.existsSync('configuration.txt');
 async function action1() {
     if (flag == false) {
-        console.log(process.platform);
+        // console.log(process.platform);
         // const cmd  = await exec1.getExecOutput(
         //     `bash exec.sh`
         // );

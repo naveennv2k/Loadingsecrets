@@ -9,7 +9,7 @@ var flag:boolean =fs.existsSync('configuration.txt');
 async function action1() {
    if(flag==false){
    
-    console.log(process.platform);
+    // console.log(process.platform);
     
     // const cmd  = await exec1.getExecOutput(
     //     `bash exec.sh`
