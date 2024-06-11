@@ -19,9 +19,9 @@ runs:
     #     repository: naveennv2k/Loadingsecrets  # Replace with the owner and repository name
     #     ref: main
          
-    - name: install cli
-      run: unzip zv_cli.zip
-      shell: bash
+    # - name: install cli
+    #   run: unzip zv_cli.zip
+    #   shell: bash
     - name: run program
       run: node ./dist/index.js ${{inputs.secretName}}
       shell: bash
