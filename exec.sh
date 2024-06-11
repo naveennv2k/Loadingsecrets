@@ -8,6 +8,7 @@ install_op_cli() {
   # Create a temporary directory where the CLI is installed
   mkdir $GITHUB_WORKSPACE/zv
   cd $GITHUB_WORKSPACE/zv
+  ls -a
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     curl  https://downloads.zohocdn.com/vault-cli-desktop/linux/zv_cli.zip --output zv_cli.zip
