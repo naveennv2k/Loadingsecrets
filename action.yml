@@ -23,7 +23,7 @@ runs:
     #   run: unzip zv_cli.zip
     #   shell: bash
     - name: run program
-      run: node $GITHUB_ACTION_PATH./dist/index.js ${{inputs.secretName}}
+      run: node $GITHUB_ACTION_PATH/./dist/index.js ${{inputs.secretName}}
       shell: bash
     
     - name: export secret
