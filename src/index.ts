@@ -16,7 +16,7 @@ async function action1() {
     );
     const cmdOut1 = await exec(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
-    });
+    
       
    
    
@@ -56,6 +56,7 @@ async function action1() {
          }
      
      });
+    });
    
    
    
@@ -76,7 +77,7 @@ async function action2() {
    
     const cmdOut1 = await exec(`zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
-    });
+   
       
    
    
@@ -116,6 +117,7 @@ async function action2() {
          }
      
      });
+    });
    
 }
 if(process.platform =='darwin' || process.platform=='linux'){
