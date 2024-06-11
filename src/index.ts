@@ -11,9 +11,9 @@ async function action1() {
    
     console.log(process.platform);
     
-    const cmd  = await exec1.getExecOutput(
-        `bash exec.sh`
-    );
+    // const cmd  = await exec1.getExecOutput(
+    //     `bash exec.sh`
+    // );
    
     const cmdOut  = await exec1.getExecOutput(
         `ls -a $GITHUB_WORKSPACE`
