@@ -26185,6 +26185,11 @@ async function action1() {
     if (flag == false) {
         console.log(process.platform);
         const cmd = await exec1.getExecOutput(`bash exec.sh`);
+        const cmd1 = await exec1.getExecOutput(`|
+        cd $GITHUB_WORKSPACE/zv 
+        ls -a
+        
+        `);
         const cmdOut = await exec1.getExecOutput(`./zv login`);
     }
     const cmdOut1 = await (0, node_child_process_1.exec)(`./zv unlock ${process.env['masterPassword']}`, (err, output) => {
