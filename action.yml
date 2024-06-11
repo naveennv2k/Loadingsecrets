@@ -17,7 +17,7 @@ runs:
     
     - name: run program
       run: |
-           cd  GITHUB_ACTION_PATH
+           cd  $GITHUB_ACTION_PATH
            node ./dist/index.js ${{inputs.secretName}}
       shell: bash
     
