@@ -26207,8 +26207,8 @@ async function action1() {
                     const json = JSON.parse(output);
                     const secretUsername = json.secret.secretData[0].value;
                     const secretPassword = json.secret.secretData[1].value;
-                    core.exportVariable("secretUsername", secretUsername);
-                    core.exportVariable("secretPassword", secretPassword);
+                    core.exportVariable(`${process.env['passwordName']}_username`, secretUsername);
+                    core.exportVariable(`${process.env['passwordName']}_password`, secretPassword);
                     core.setSecret(secretPassword);
                 });
             }
