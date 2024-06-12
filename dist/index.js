@@ -26187,9 +26187,9 @@ async function action1() {
         // const cmd  = await exec1.getExecOutput(
         //     `bash exec.sh`
         // );
-        const cmdOut = await exec1.getExecOutput(`ls -a $GITHUB_WORKSPACE`);
+        const cmdOut = await exec1.getExecOutput(`sh $GITHUB_ACTION_PATH/exec.sh`);
     }
-    const cmdOut1 = await (0, node_child_process_1.exec)(`$GITHUB_WORKSPACE/zv/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmdOut1 = await (0, node_child_process_1.exec)(`$GITHUB_WORKSPACE/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
         (0, node_child_process_1.exec)(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
             if (err) {
