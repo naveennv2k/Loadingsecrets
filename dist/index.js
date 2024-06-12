@@ -26185,8 +26185,8 @@ async function action1() {
     if (flag == false) {
         const cmdOut = await executor.getExecOutput(` ${process.env['GITHUB_ACTION_PATH']}/exec.sh`);
     }
-    const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock "${process.env['masterPassword']}"`, (err, output) => {
-        (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv search -k "${process.env['passwordName']}"`, (err, output) => {
+    const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
+        (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv search -k ${process.env['passwordName']}`, (err, output) => {
             if (err) {
                 console.error("could not execute command: ", err);
                 return;

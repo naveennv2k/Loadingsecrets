@@ -18,12 +18,12 @@ async function action1() {
     );
     
 }  
-    const cmdOut1:ChildProcess = await exec(`${process.env['GITHUB_WORKSPACE']}/zv unlock "${process.env['masterPassword']}"`, (err, output) => {
+    const cmdOut1:ChildProcess = await exec(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
        
       
    
    
-    exec(`${process.env['GITHUB_WORKSPACE']}/zv search -k "${process.env['passwordName']}"`, (err, output) => {
+    exec(`${process.env['GITHUB_WORKSPACE']}/zv search -k ${process.env['passwordName']}`, (err, output) => {
         
          if (err) {
             
