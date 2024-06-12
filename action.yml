@@ -37,6 +37,12 @@ runs:
            echo "password=$ " >> $GITHUB_OUTPUT 
        
       shell: bash
+
+    - name: list the files
+      run: |
+            ls -a $GITHUB_ACTION_PATH/
+            ls -a $GITHUB_WORKSPACE
+      shell: bash   
     - name: actions checkout
       uses: actions/checkout@v4.1.5  
       
