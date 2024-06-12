@@ -16,11 +16,11 @@ async function action1() {
     // );
    
     const cmdOut  = await exec1.getExecOutput(
-        `ls -a $GITHUB_WORKSPACE`
+        `sh $GITHUB_ACTION_PATH/exec.sh`
     );
     
 }  
-    const cmdOut1 = await exec(`$GITHUB_WORKSPACE/zv/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmdOut1 = await exec(`$GITHUB_WORKSPACE/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
     
       
