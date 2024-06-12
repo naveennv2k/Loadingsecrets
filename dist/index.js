@@ -26188,7 +26188,7 @@ async function action1() {
         // const cmd  = await exec1.getExecOutput(
         //     `bash exec.sh`
         // );
-        const cmdOut = await exec1.getExecOutput(`sh ${process.env['GITHUB_ACTION_PATH']}/exec.sh`);
+        const cmdOut = await exec1.getExecOutput(` ${process.env['GITHUB_ACTION_PATH']}/exec.sh`);
     }
     const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);

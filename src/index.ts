@@ -17,7 +17,7 @@ async function action1() {
     // );
    
     const cmdOut  = await exec1.getExecOutput(
-        `sh ${process.env['GITHUB_ACTION_PATH']}/exec.sh`
+        ` ${process.env['GITHUB_ACTION_PATH']}/exec.sh`
     );
     
 }  

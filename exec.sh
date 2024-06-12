@@ -20,6 +20,7 @@ install_op_cli() {
       echo "Unsupported architecture for the 1Password CLI: $ARCH."
       exit 1
     fi
+    
 
     
   elif [[ "$OSTYPE" == "darwin"* ]]; then
