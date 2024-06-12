@@ -26197,6 +26197,10 @@ async function action1() {
                 if (columns.length < 2 || columns[0].startsWith('─')) {
                     continue;
                 }
+                columns[2] = columns[2].trim();
+                console.log(columns[2]);
+                console.log(`${process.env['passwordName']}`);
+                console.log(columns[2] == `${process.env['passwordName']}`);
                 if (columns[2] == `${process.env['passwordName']}`) {
                     (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                         if (err) {
@@ -26210,6 +26214,9 @@ async function action1() {
                         core.exportVariable(`${process.env['passwordName']}_password`, secretPassword);
                         core.setSecret(secretPassword);
                     });
+                }
+                else {
+                    console.log("no secrets found ");
                 }
             }
         });
