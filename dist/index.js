@@ -26186,23 +26186,16 @@ async function action1() {
         const cmdOut = await executor.getExecOutput(` ${process.env['GITHUB_ACTION_PATH']}/exec.sh`);
     }
     const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
-        (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv search -k ${process.env['passwordName']}`, (err, output) => {
+        (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv search -k "${process.env['passwordName']}" --name --tags -V --output json`, (err, output) => {
             if (err) {
                 console.error("could not execute command: ", err);
                 return;
             }
-            const lines = output.split('\n');
-            for (let i = 2; i < lines.length; i++) {
-                const columns = lines[i].split('│').map(col => col.trim());
-                if (columns.length < 2 || columns[0].startsWith('─')) {
-                    continue;
-                }
-                columns[2] = columns[2].trim();
-                console.log(columns[2]);
-                console.log(`${process.env['passwordName']}`);
-                console.log(columns[2] == `${process.env['passwordName']}`);
-                if (columns[2] == `${process.env['passwordName']}`) {
-                    (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
+            var json = JSON.parse(output);
+            for (let iterator = 0; iterator < json.length; iterator++) {
+                var currentObject = json[iterator];
+                if (currentObject.secretname == `${process.env['passwordName']}`) {
+                    (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv get -id ${currentObject.secretid} --output json --not-safe`, (err, output) => {
                         if (err) {
                             console.error("could not execute command: ", err);
                             return;
@@ -26215,10 +26208,37 @@ async function action1() {
                         core.setSecret(secretPassword);
                     });
                 }
-                else {
-                    console.log("no secrets found ");
-                }
             }
+            //  console.log(json[0].secretname);
+            //  const lines:string[] = output;
+            //  for (let i = 2; i < lines.length; i++) {
+            //      const columns:string[] = lines[i].split('│').map(col => col.trim());
+            //      if (columns.length < 2 || columns[0].startsWith('─')) {
+            //          continue;
+            //      }
+            //      columns[2]=columns[2].trim();
+            //      console.log(columns[2]);
+            //     console.log(`${process.env['passwordName']}`);
+            //      console.log(columns[2]==`${process.env['passwordName']}`);
+            //      if(columns[2]==`${process.env['passwordName']}`){
+            //      exec(`${process.env['GITHUB_WORKSPACE']}/zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
+            //         if (err) {
+            //             console.error("could not execute command: ", err)
+            //             return
+            //         }
+            //          const json=JSON.parse(output);
+            //        const secretUsername:string =json.secret.secretData[0].value;
+            //        const secretPassword:string =json.secret.secretData[1].value;
+            //        core.exportVariable(`${process.env['passwordName']}_username`, secretUsername);
+            //        core.exportVariable(`${process.env['passwordName']}_password`, secretPassword);
+            //        core.setSecret(secretPassword);
+            //      }
+            //  );
+            //  }
+            //  else{
+            //     console.log("no secrets found ");
+            //  }
+            // }
         });
     });
 }

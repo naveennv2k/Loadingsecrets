@@ -5,6 +5,8 @@
   "scripts": {
     "build": "tsc && ncc build src/index.ts",
     "build1":"tsc && ncc build src/installCli.js",
+    "build2":"tsc && ncc build test.js",
+    
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
