@@ -4,9 +4,10 @@ import * as core from '@actions/core';
 import * as exec1 from "@actions/exec";
 import * as fs from 'fs';
 
-var flag:boolean =fs.existsSync('configuration.txt');
+var flag:boolean =fs.existsSync('/Users/runner/ZohoVaultCLI/credentials.json');
 
 async function action1() {
+    console.log(flag);
    if(flag==false){
    
     console.log(process.env);
