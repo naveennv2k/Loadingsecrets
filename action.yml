@@ -27,7 +27,7 @@ runs:
             printenv
             ls -a $GITHUB_ACTION_PATH/
             ls -a $GITHUB_WORKSPACE
-            node $GITHUB_ACTION_PATH/./dist/index.js ${{inputs.secretName}}
+            node $GITHUB_ACTION_PATH/dist/index.js ${{inputs.secretName}}
       shell: bash
     
     - name: export secret
