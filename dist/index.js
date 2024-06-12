@@ -26182,16 +26182,13 @@ const exec1 = __importStar(__nccwpck_require__(1514));
 const fs = __importStar(__nccwpck_require__(7147));
 var flag = fs.existsSync(`${process.env['HOME']}/ZohoVaultCLI/credentials.json`);
 async function action1() {
-    console.log(flag);
     if (flag == false) {
-        console.log(process.env);
         // const cmd  = await exec1.getExecOutput(
         //     `bash exec.sh`
         // );
         const cmdOut = await exec1.getExecOutput(` ${process.env['GITHUB_ACTION_PATH']}/exec.sh`);
     }
     const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
-        console.log(output);
         (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv search -k ${process.env['passwordName']}`, (err, output) => {
             if (err) {
                 console.error("could not execute command: ", err);

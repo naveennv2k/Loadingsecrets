@@ -7,10 +7,10 @@ import * as fs from 'fs';
 var flag:boolean =fs.existsSync(`${process.env['HOME']}/ZohoVaultCLI/credentials.json`);
 
 async function action1() {
-    console.log(flag);
+  
    if(flag==false){
    
-    console.log(process.env);
+  
     
     // const cmd  = await exec1.getExecOutput(
     //     `bash exec.sh`
@@ -22,8 +22,7 @@ async function action1() {
     
 }  
     const cmdOut1 = await exec(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
-        console.log(output);
-    
+       
       
    
    
