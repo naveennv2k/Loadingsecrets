@@ -1,7 +1,7 @@
-import { exec } from 'node:child_process';
+import { ChildProcess, exec } from 'node:child_process';
 import * as xmlJs from 'xml-js';
 import * as core from '@actions/core';
-import * as exec1 from "@actions/exec";
+import * as executor from "@actions/exec";
 import * as fs from 'fs';
 
 var flag:boolean =fs.existsSync(`${process.env['HOME']}/ZohoVaultCLI/credentials.json`);
@@ -11,17 +11,14 @@ async function action1() {
    if(flag==false){
    
   
-    
-    // const cmd  = await exec1.getExecOutput(
-    //     `bash exec.sh`
-    // );
+
    
-    const cmdOut  = await exec1.getExecOutput(
+    const cmdOut :executor.ExecOutput = await executor.getExecOutput(
         ` ${process.env['GITHUB_ACTION_PATH']}/exec.sh`
     );
     
 }  
-    const cmdOut1 = await exec(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmdOut1:ChildProcess = await exec(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
        
       
    
@@ -34,12 +31,12 @@ async function action1() {
              return
          }
         
-         const lines = output.split('\n');
+         const lines:string[] = output.split('\n');
         
          
          for (let i = 2; i < lines.length; i++) {
              
-             const columns = lines[i].split('│').map(col => col.trim());
+             const columns:string[] = lines[i].split('│').map(col => col.trim());
           
              
              if (columns.length < 2 || columns[0].startsWith('─')) {
@@ -73,7 +70,7 @@ async function action1() {
 async function action2() {
     console.log(process.platform);
   
-        const cmd  = await exec1.getExecOutput(
+        const cmd  = await executor.getExecOutput(
             "node ./installCli.js"
         );
      
