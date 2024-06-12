@@ -26180,7 +26180,7 @@ const node_child_process_1 = __nccwpck_require__(7718);
 const core = __importStar(__nccwpck_require__(6173));
 const exec1 = __importStar(__nccwpck_require__(1514));
 const fs = __importStar(__nccwpck_require__(7147));
-var flag = fs.existsSync('/Users/runner/ZohoVaultCLI/credentials.json');
+var flag = fs.existsSync(`${process.env['HOME']}/ZohoVaultCLI/credentials.json`);
 async function action1() {
     console.log(flag);
     if (flag == false) {
