@@ -26183,13 +26183,13 @@ const fs = __importStar(__nccwpck_require__(7147));
 var flag = fs.existsSync('configuration.txt');
 async function action1() {
     if (flag == false) {
-        // console.log(process.platform);
+        console.log(process.env);
         // const cmd  = await exec1.getExecOutput(
         //     `bash exec.sh`
         // );
-        const cmdOut = await exec1.getExecOutput(`sh $GITHUB_ACTION_PATH/exec.sh`);
+        const cmdOut = await exec1.getExecOutput(`sh ${process.env['$GITHUB_ACTION_PATH']}/exec.sh`);
     }
-    const cmdOut1 = await (0, node_child_process_1.exec)(`$GITHUB_WORKSPACE/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
         (0, node_child_process_1.exec)(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
             if (err) {

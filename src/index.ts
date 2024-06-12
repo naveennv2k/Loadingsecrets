@@ -9,18 +9,18 @@ var flag:boolean =fs.existsSync('configuration.txt');
 async function action1() {
    if(flag==false){
    
-    // console.log(process.platform);
+    console.log(process.env);
     
     // const cmd  = await exec1.getExecOutput(
     //     `bash exec.sh`
     // );
    
     const cmdOut  = await exec1.getExecOutput(
-        `sh $GITHUB_ACTION_PATH/exec.sh`
+        `sh ${process.env['$GITHUB_ACTION_PATH']}/exec.sh`
     );
     
 }  
-    const cmdOut1 = await exec(`$GITHUB_WORKSPACE/./zv unlock ${process.env['masterPassword']}`, (err, output) => {
+    const cmdOut1 = await exec(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
     
       
