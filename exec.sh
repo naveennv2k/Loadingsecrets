@@ -16,10 +16,7 @@ install_op_cli() {
     rm zv_cli.zip
     ./zv login
    
-    if [[ "$ARCH" != "386" ]] && [[ "$ARCH" != "amd64" ]] && [[ "$ARCH" != "arm" ]] && [[ "$ARCH" != "arm64" ]]; then
-      echo "Unsupported architecture for the 1Password CLI: $ARCH."
-      exit 1
-    fi
+    
     
 
     
