@@ -26206,6 +26206,7 @@ async function action1() {
                         core.exportVariable(`${process.env['passwordName']}_username`, secretUsername);
                         core.exportVariable(`${process.env['passwordName']}_password`, secretPassword);
                         core.setSecret(secretPassword);
+                        core.setSecret(secretUsername);
                     });
                 }
             }
