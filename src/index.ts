@@ -26,7 +26,7 @@ async function action1() {
       
    
    
-    exec(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
+    exec(`${process.env['GITHUB_WORKSPACE']}/zv search -k ${process.env['passwordName']}`, (err, output) => {
         
          if (err) {
             
@@ -46,7 +46,7 @@ async function action1() {
                  continue;
              }
           
-             exec(`$GITHUB_WORKSPACE/zv./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
+             exec(`${process.env['GITHUB_WORKSPACE']}/zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                  
                
                  const json=JSON.parse(output);

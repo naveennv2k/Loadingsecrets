@@ -26191,7 +26191,7 @@ async function action1() {
     }
     const cmdOut1 = await (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv unlock ${process.env['masterPassword']}`, (err, output) => {
         console.log(output);
-        (0, node_child_process_1.exec)(`./zv search -k ${process.env['passwordName']}`, (err, output) => {
+        (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv search -k ${process.env['passwordName']}`, (err, output) => {
             if (err) {
                 console.error("could not execute command: ", err);
                 return;
@@ -26202,7 +26202,7 @@ async function action1() {
                 if (columns.length < 2 || columns[0].startsWith('─')) {
                     continue;
                 }
-                (0, node_child_process_1.exec)(`$GITHUB_WORKSPACE/zv./zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
+                (0, node_child_process_1.exec)(`${process.env['GITHUB_WORKSPACE']}/zv get -id ${columns[1]} --output json --not-safe`, (err, output) => {
                     const json = JSON.parse(output);
                     const secretUsername = json.secret.secretData[0].value;
                     const secretPassword = json.secret.secretData[1].value;
